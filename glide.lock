@@ -1,0 +1,42 @@
+hash: 80cb40f7c2c49f3723ffa3e57ad54023fa4cde4e64ec23a4be9ed35789932af6
+updated: 2017-04-17T22:28:05.515775408+09:00
+imports:
+- name: github.com/aws/aws-sdk-go
+  version: 7be45195c3af1b54a609812f90c05a7e492e2491
+  subpackages:
+  - aws
+  - aws/awserr
+  - aws/awsutil
+  - aws/client
+  - aws/client/metadata
+  - aws/corehandlers
+  - aws/credentials
+  - aws/credentials/ec2rolecreds
+  - aws/credentials/endpointcreds
+  - aws/credentials/stscreds
+  - aws/defaults
+  - aws/ec2metadata
+  - aws/endpoints
+  - aws/request
+  - aws/session
+  - aws/signer/v4
+  - private/protocol
+  - private/protocol/json/jsonutil
+  - private/protocol/jsonrpc
+  - private/protocol/query
+  - private/protocol/query/queryutil
+  - private/protocol/rest
+  - private/protocol/xml/xmlutil
+  - service/ssm
+  - service/sts
+- name: github.com/go-ini/ini
+  version: e3c2d47c61e5333f9aa2974695dd94396eb69c75
+- name: github.com/inconshreveable/mousetrap
+  version: 76626ae9c91c4f2a10f34cad8ce83ea42c93bb75
+- name: github.com/jmespath/go-jmespath
+  version: bd40a432e4c76585ef6b72d3fd96fb9b6dc7b68d
+- name: github.com/spf13/cobra
+  version: 5deb57bbca49eb370538fc295ba4b2988f9f5e09
+- name: github.com/spf13/pflag
+  version: e453343e6260b4a3a89f1f0e10a2fbb07f8d9750
+testImports: []
