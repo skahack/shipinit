@@ -81,7 +81,7 @@ func (c *envloadCmd) execute(_ *cobra.Command, args []string) error {
 	return nil
 }
 
-func describeParamKeys(client *ssm.SSM, env string, serviceName string) ([]*ssm.ParameterMetadata, error) {
+func _describeParamKeys(client *ssm.SSM, env string, serviceName string, keys []*ssm.ParameterMetadata, next *string) ([]*ssm.ParameterMetadata, error) {
 	filter := &ssm.ParametersFilter{
 		Key: aws.String("Name"),
 		Values: []*string{
@@ -94,13 +94,27 @@ func describeParamKeys(client *ssm.SSM, env string, serviceName string) ([]*ssm.
 		Filters:    filters,
 		MaxResults: aws.Int64(50),
 	}
+	if *next != "" {
+		param.NextToken = next
+	}
 
 	res, err := client.DescribeParameters(param)
 	if err != nil {
 		return nil, err
 	}
 
-	return res.Parameters, nil
+	keys = append(keys, res.Parameters...)
+	if res.NextToken == nil {
+		return keys, nil
+	} else {
+		return _describeParamKeys(client, env, serviceName, keys, res.NextToken)
+	}
+}
+
+func describeParamKeys(client *ssm.SSM, env string, serviceName string) ([]*ssm.ParameterMetadata, error) {
+	var keys []*ssm.ParameterMetadata
+
+	return _describeParamKeys(client, env, serviceName, keys, aws.String(""))
 }
 
 func convertChunkedParams(params []*ssm.ParameterMetadata) [][]*ssm.ParameterMetadata {
