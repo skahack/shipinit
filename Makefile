@@ -1,5 +1,5 @@
 NAME     := shipinit
-VERSION  := v0.0.2
+VERSION  := v0.1.0
 REVISION := $(shell git rev-parse --short HEAD)
 
 SRCS    := $(shell find . -type f -name '*.go')
