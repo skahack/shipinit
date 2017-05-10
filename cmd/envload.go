@@ -160,7 +160,7 @@ func getEnvVars(client *ssm.SSM, params []*ssm.ParameterMetadata) ([]*ssm.Parame
 func dumpEnvVars(params []*ssm.Parameter) {
 	for _, v := range params {
 		ss := strings.Split(*v.Name, ".")
-		fmt.Fprintf(os.Stdout, "%s=%s\n", ss[len(ss)-1], *v.Value)
+		fmt.Fprintf(os.Stdout, "export %s=%s\n", ss[len(ss)-1], *v.Value)
 	}
 }
 
