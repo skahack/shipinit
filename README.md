@@ -2,6 +2,10 @@
 
 A secret management tool for container, builds on EC2 SSM Parameter Store.
 
+## Installation
+
+Go to [release page](https://github.com/SKAhack/shipinit/releases).
+
 ## Usage
 
 The envload command is a exporting env vars from SSM Parameter Store.
